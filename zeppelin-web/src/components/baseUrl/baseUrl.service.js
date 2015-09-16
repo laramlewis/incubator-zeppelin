@@ -24,7 +24,7 @@ angular.module('zeppelinWebApp').service('baseUrlSrv', function() {
       }
     }
     //Exception for when running locally via grunt
-    if (port === 3333 || port === 9000 || port === 3000) {
+    if (port === 3333 || port === 9000) {
       port = 8080;
     }
     return port;
@@ -32,11 +32,19 @@ angular.module('zeppelinWebApp').service('baseUrlSrv', function() {
 
   this.getWebsocketUrl = function() {
     var wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-    return wsProtocol + '//' + location.hostname + ':' + this.getPort() + '/ws';
+    if(this.getPort() === 3000){
+      return wsProtocol + '//' + 'bdavm561.svl.ibm.com:8099' + '/ws';
+    }else{
+      return wsProtocol + '//' + location.hostname + ':' + this.getPort() + '/ws';
+    }
   };
 
   this.getRestApiBase = function() {
-    return location.protocol + '//' + location.hostname + ':' + this.getPort() + skipTrailingSlash(location.pathname) + '/api';
+    if(this.getPort() === 3000){
+      return location.protocol + '//' + 'bdavm561.svl.ibm.com:8099' + skipTrailingSlash(location.pathname) + '/api';
+    }else{
+      return location.protocol + '//' + location.hostname + ':' + this.getPort() + skipTrailingSlash(location.pathname) + '/api';
+    }
   };
 
   var skipTrailingSlash = function(path) {
