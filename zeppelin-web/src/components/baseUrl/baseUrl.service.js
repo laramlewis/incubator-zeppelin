@@ -24,7 +24,7 @@ angular.module('zeppelinWebApp').service('baseUrlSrv', function() {
       }
     }
     //Exception for when running locally via grunt
-    if (port === 3333 || port === 9000) {
+    if (port === 3333 || port === 9000 || port === 3000) {
       port = 8080;
     }
     return port;
