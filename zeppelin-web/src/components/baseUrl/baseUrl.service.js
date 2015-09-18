@@ -48,7 +48,7 @@ angular.module('zeppelinWebApp').service('baseUrlSrv', function() {
   };
 
   var skipTrailingSlash = function(path) {
-    return path.replace(/\/$/, '');
+    return path.replace('/edited_zeppelin_homepage.html','').replace('/zepp','').replace(/\/$/, '');
   };
 
 });
