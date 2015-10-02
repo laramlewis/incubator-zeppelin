@@ -71,8 +71,7 @@ public class CorsFilter implements Filter {
   }
 
   private void addCorsHeaders(HttpServletResponse response, String origin) {
-    response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-    response.addHeader("Access-Control-Allow-Origin", origin);
+    response.addHeader("Access-Control-Allow-Origin", "*");
     response.addHeader("Access-Control-Allow-Credentials", "true");
     response.addHeader("Access-Control-Allow-Headers", "authorization,Content-Type");
     response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, HEAD, DELETE");
